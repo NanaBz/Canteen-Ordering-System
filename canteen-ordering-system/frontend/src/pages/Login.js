@@ -1,3 +1,4 @@
+// src/pages/Login.js
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -22,11 +23,23 @@ const Login = () => {
     };
 
     return (
-        <form onSubmit={onSubmit}>
-            <input type="email" name="email" value={email} onChange={onChange} placeholder="Email" required />
-            <input type="password" name="password" value={password} onChange={onChange} placeholder="Password" required />
-            <button type="submit">Login</button>
-        </form>
+        <div>
+            <img src="/images/login.png" alt="Login" className="page-image" />
+            <h1>Login</h1>
+            <form onSubmit={onSubmit}>
+                <label>
+                    Email:
+                    <input type="email" name="email" value={email} onChange={onChange} />
+                </label>
+                <br />
+                <label>
+                    Password:
+                    <input type="password" name="password" value={password} onChange={onChange} />
+                </label>
+                <br />
+                <button type="submit">Login</button>
+            </form>
+        </div>
     );
 };
 

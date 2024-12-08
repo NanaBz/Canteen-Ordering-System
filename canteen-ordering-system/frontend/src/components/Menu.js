@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const Menu = () => {
+const Menu = ({ addToCart }) => {
     const [menuItems, setMenuItems] = useState([]);
 
     useEffect(() => {
@@ -23,11 +23,13 @@ const Menu = () => {
             <ul>
                 {menuItems.map(item => (
                     <li key={item._id}>
+                        <img src={`/images/${item.name.toLowerCase()}.png`} alt={item.name} className="page-image" />
                         <h2>{item.name}</h2>
-                        <p>Price: ${item.price}</p>
+                        <p>Price: ₵{item.price}</p>
                         <p>Category: {item.category}</p>
                         <p>Nutritional Info: {item.nutritionalInfo}</p>
                         <p>Customization Options: {item.customizationOptions.join(', ')}</p>
+                        <button onClick={() => addToCart(item)}>Add to Cart</button>
                     </li>
                 ))}
             </ul>

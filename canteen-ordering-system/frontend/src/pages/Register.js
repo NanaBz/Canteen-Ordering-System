@@ -1,3 +1,4 @@
+// src/pages/Register.js
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -5,10 +6,12 @@ const Register = () => {
     const [formData, setFormData] = useState({
         username: '',
         email: '',
-        password: ''
+        password: '',
+        dietaryRestrictions: '',
+        allergies: ''
     });
 
-    const { username, email, password } = formData;
+    const { username, email, password, dietaryRestrictions, allergies } = formData;
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -23,12 +26,43 @@ const Register = () => {
     };
 
     return (
-        <form onSubmit={onSubmit}>
-            <input type="text" name="username" value={username} onChange={onChange} placeholder="Username" required />
-            <input type="email" name="email" value={email} onChange={onChange} placeholder="Email" required />
-            <input type="password" name="password" value={password} onChange={onChange} placeholder="Password" required />
-            <button type="submit">Register</button>
-        </form>
+        <div>
+            <img src="/images/register.png" alt="Register" className="page-image" />
+            <h1>Register</h1>
+            <form onSubmit={onSubmit}>
+                <div>
+                    <label>
+                        Username:
+                        <input type="text" name="username" value={username} onChange={onChange} />
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Email:
+                        <input type="email" name="email" value={email} onChange={onChange} />
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Password:
+                        <input type="password" name="password" value={password} onChange={onChange} />
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Dietary Restrictions:
+                        <input type="text" name="dietaryRestrictions" value={dietaryRestrictions} onChange={onChange} />
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Allergies:
+                        <input type="text" name="allergies" value={allergies} onChange={onChange} />
+                    </label>
+                </div>
+                <button type="submit">Register</button>
+            </form>
+        </div>
     );
 };
 
